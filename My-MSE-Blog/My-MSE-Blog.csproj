@@ -133,6 +133,5 @@
     </VisualStudio>
   </ProjectExtensions>
   <!-- This has to be from version 10 as it is the smallest common version for mono/xbuild and msbuild. -->
-  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
 </Project>
