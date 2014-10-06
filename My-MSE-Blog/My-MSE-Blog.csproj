@@ -39,6 +39,9 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MSE-SWE.Interfaces">
+      <HintPath>..\Libs\MSE-SWE.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -83,6 +86,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Uebungen\UEB1.cs" />
+    <Compile Include="Uebungen\UEB2.cs" />
+    <Compile Include="Uebungen\UEB3.cs" />
+    <Compile Include="Uebungen\UEB4.cs" />
+    <Compile Include="Uebungen\UEB5.cs" />
+    <Compile Include="Uebungen\UEB6.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
