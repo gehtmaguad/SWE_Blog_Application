@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My-MSE-Blog", "My-MSE-Blog\My-MSE-Blog.csproj", "{B3528424-4BE0-4E73-BCE2-436061B0C297}"
 EndProject
 Global
@@ -13,6 +15,9 @@ Global
 		{B3528424-4BE0-4E73-BCE2-436061B0C297}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3528424-4BE0-4E73-BCE2-436061B0C297}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3528424-4BE0-4E73-BCE2-436061B0C297}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = My-MSE-Blog\My-MSE-Blog.csproj
