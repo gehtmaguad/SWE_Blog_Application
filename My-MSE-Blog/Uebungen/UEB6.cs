@@ -11,5 +11,11 @@ namespace MyMSEBlog.Uebungen
         public void HelloWorld()
         {
         }
+
+
+        public void SetupContainer(Autofac.ContainerBuilder builder)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
