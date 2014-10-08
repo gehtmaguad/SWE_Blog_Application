@@ -23,37 +23,37 @@ namespace MyMSEBlog.Core.BL
             throw new NotImplementedException();
         }
 
-        public IQueryable<MSE_SWE.Interfaces.IBlogPost> GetDeletedPostList()
+        public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetDeletedPostList()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<MSE_SWE.Interfaces.IBlogPost> GetOwnPostList(string email)
+        public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetOwnPostList(string email)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<MSE_SWE.Interfaces.IBlogPost> GetPostList()
+        public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetPostList()
         {
             throw new NotImplementedException();
         }
 
-        public MSE_SWE.Interfaces.IUser GetUser(string email)
+        public MSE.SWE.Interfaces.IUser GetUser(string email)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<MSE_SWE.Interfaces.IUser> GetUserList()
+        public IQueryable<MSE.SWE.Interfaces.IUser> GetUserList()
         {
             return _dal.GetUserList();
         }
 
-        public MSE_SWE.Interfaces.IBlogPost GetPost(int id)
+        public MSE.SWE.Interfaces.IBlogPost GetPost(int id)
         {
             throw new NotImplementedException();
         }
 
-        public MSE_SWE.Interfaces.IUser GetUser(int id)
+        public MSE.SWE.Interfaces.IUser GetUser(int id)
         {
             return _dal.GetUserList().Single(i => i.ID == id);
         }

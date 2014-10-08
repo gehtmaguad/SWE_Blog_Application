@@ -1,5 +1,4 @@
 ﻿using MSE.SWE.Interfaces;
-using MSE_SWE.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -52,7 +51,7 @@ namespace MyMSEBlog.Core.DAL
             var defaultDataWasInitialized = false;
             if (_repo.Users == null || _repo.Users.Count == 0)
             {
-                _repo.Users = new List<User>() { new User() { ID = 1, LastName = "Administrator", EMail = "test@test.com", PasswordHash = "1234", Group = MSE_SWE.Interfaces.UserGroup.Admin } };
+                _repo.Users = new List<User>() { new User() { ID = 1, LastName = "Administrator", EMail = "test@test.com", PasswordHash = "1234", Group = MSE.SWE.Interfaces.UserGroup.Admin } };
                 defaultDataWasInitialized = true;
             }
             if (_repo.Posts == null || _repo.Posts.Count == 0)

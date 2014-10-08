@@ -15,12 +15,12 @@ namespace MyMSEBlog.Uebungen
             // I'm fine
         }
 
-        public MSE_SWE.Interfaces.IAdminController GetAdminController()
+        public MSE.SWE.Interfaces.IAdminController GetAdminController()
         {
             return new AdminController();
         }
 
-        public MSE_SWE.Interfaces.IAdminUserController GetAdminUserController()
+        public MSE.SWE.Interfaces.IAdminUserController GetAdminUserController()
         {
             return new AdminUserController();
         }
@@ -30,12 +30,12 @@ namespace MyMSEBlog.Uebungen
             return new MyMSEBlog.Core.BL.BL(dal);
         }
 
-        public MSE_SWE.Interfaces.IBlogPostsController GetBlogPostController()
+        public MSE.SWE.Interfaces.IBlogPostsController GetBlogPostController()
         {
             throw new NotImplementedException();
         }
 
-        public MSE_SWE.Interfaces.IBlogPostViewModel GetBlogPostViewModel(MSE_SWE.Interfaces.IBlogPost mdl)
+        public MSE.SWE.Interfaces.IBlogPostViewModel GetBlogPostViewModel(MSE.SWE.Interfaces.IBlogPost mdl)
         {
             throw new NotImplementedException();
         }
@@ -45,17 +45,17 @@ namespace MyMSEBlog.Uebungen
             return new MyMSEBlog.Core.DAL.FileDAL(filename);
         }
 
-        public MSE_SWE.Interfaces.IUserViewModel GetUserViewModel(MSE_SWE.Interfaces.IUser mdl)
+        public MSE.SWE.Interfaces.IUserViewModel GetUserViewModel(MSE.SWE.Interfaces.IUser mdl)
         {
             return new UserViewModel(mdl);
         }
 
-        public MSE_SWE.Interfaces.IAdminUserController GetAdminUserController(IBL bl)
+        public MSE.SWE.Interfaces.IAdminUserController GetAdminUserController(IBL bl)
         {
             return new AdminUserController(bl);
         }
 
-        public MSE_SWE.Interfaces.IBlogPostsController GetBlogPostController(IBL bl)
+        public MSE.SWE.Interfaces.IBlogPostsController GetBlogPostController(IBL bl)
         {
             throw new NotImplementedException();
         }
