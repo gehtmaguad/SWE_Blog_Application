@@ -101,10 +101,6 @@ namespace MyMSEBlog.Models
             {
                 throw new NotImplementedException();
             }
-            set
-            {
-                throw new NotImplementedException();
-            }
         }
 
         public int ID

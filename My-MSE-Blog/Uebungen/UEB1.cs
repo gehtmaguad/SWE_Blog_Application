@@ -49,5 +49,15 @@ namespace MyMSEBlog.Uebungen
         {
             return new UserViewModel(mdl);
         }
+
+        public MSE_SWE.Interfaces.IAdminUserController GetAdminUserController(IBL bl)
+        {
+            return new AdminUserController(bl);
+        }
+
+        public MSE_SWE.Interfaces.IBlogPostsController GetBlogPostController(IBL bl)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

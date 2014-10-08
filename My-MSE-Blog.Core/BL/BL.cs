@@ -47,5 +47,15 @@ namespace MyMSEBlog.Core.BL
         {
             return _dal.GetUserList();
         }
+
+        public MSE_SWE.Interfaces.IBlogPost GetPost(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public MSE_SWE.Interfaces.IUser GetUser(int id)
+        {
+            return _dal.GetUserList().Single(i => i.ID == id);
+        }
     }
 }

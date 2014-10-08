@@ -1,4 +1,5 @@
-﻿using MSE_SWE.Interfaces;
+﻿using MSE.SWE.Interfaces;
+using MSE_SWE.Interfaces;
 using MyMSEBlog.Models;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,30 @@ namespace MyMSEBlog.Controllers
 {
     public class AdminUserController : Controller, IAdminUserController
     {
-        public ActionResult Index(int page)
+        IBL _bl;
+
+        public AdminUserController()
+        {
+        }
+
+        /// <summary>
+        /// Temporary. Will be replaced by a autofac solution.
+        /// </summary>
+        private void EnsureBL()
         {
             // TODO: Improve this!
-            var bl = new MyMSEBlog.Core.BL.BL(new MyMSEBlog.Core.DAL.FileDAL(Server.MapPath("~/App_Data/Repository.xml")));
-            return View(bl.GetUserList().Skip(page * 25).Take(25));
+            _bl = new MyMSEBlog.Core.BL.BL(new MyMSEBlog.Core.DAL.FileDAL(Server.MapPath("~/App_Data/Repository.xml")));
+        }
+
+        public AdminUserController(IBL bl)
+        {
+            _bl = bl;
+        }
+
+        public ActionResult Index(int page = 0)
+        {
+            EnsureBL();
+            return View(_bl.GetUserList().Skip(page * 25).Take(25));
         }
 
         public ActionResult Create()
