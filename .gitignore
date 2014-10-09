@@ -4,4 +4,4 @@ packages/
 *.suo
 *.user
 *.userprefs
-App_Data/Repository.xml
+My-MSE-Blog/App_Data/Repository.xml
