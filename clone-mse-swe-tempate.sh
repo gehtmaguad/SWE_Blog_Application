@@ -11,7 +11,7 @@ if [ "$#" -ne 4 ]; then
   echo ""
   echo "Example"
   echo "-------"
-  echo "On your PC"
+  echo "On your PC:"
   echo "./clone-mse-swe-tempate.sh MSE-WS14-SWE if99x9999 if99x0000 if99x9999"
   echo ""
   echo "On your colleagues PC:"
