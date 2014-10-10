@@ -5,17 +5,17 @@ if [ "$#" -ne 4 ]; then
   echo "./setup-remotes.sh MSE-WS$(date +%y)-SWE <Main repo> <Second repo> <Username>"
   echo ""
   echo "MSE-WS$(date +%y)-SWE - Name of the repo. Must include the current year."
-  echo "Main repo    - if-number of your groups main repository. Example: if99x9999"
-  echo "Second repo  - if-number of your groups second repository. Example: if99x0000"
-  echo "Username     - if-number of your user name. Example: if99x9999"
+  echo "Main repo    - se-number of your groups main repository. Example: if99x9999"
+  echo "Second repo  - se-number of your groups second repository. Example: if99x0000"
+  echo "Username     - se-number of your user name. Example: if99x9999"
   echo ""
   echo "Example"
   echo "-------"
   echo "On your PC:"
-  echo "./setup-remotes.sh MSE-WS$(date +%y)-SWE if99x9999 if99x0000 if99x9999"
+  echo "./setup-remotes.sh MSE-WS$(date +%y)-SWE se99m9999 se99m0000 se99m9999"
   echo ""
   echo "On your colleagues PC:"
-  echo "./setup-remotes.sh MSE-WS$(date +%y)-SWE if99x9999 if99x0000 if99x0000"
+  echo "./setup-remotes.sh MSE-WS$(date +%y)-SWE se99m9999 se99m0000 se99m0000"
   exit 1;
 fi
 
