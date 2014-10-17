@@ -33,4 +33,6 @@ echo ""
 git clone $cfgTempateUrl "$repoName"
 cd "$repoName"
 chmod +x *.sh
+
+echo ""
 ./setup-remotes.sh "$repoName"
