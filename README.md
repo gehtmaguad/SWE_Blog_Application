@@ -38,16 +38,15 @@ Laden Sie aus dem Template die Datei clone-mse-swe-tempate.sh herunter
 
 https://inf-swe-git.technikum-wien.at/raw/MSE/SWE.git/master/clone-mse-swe-tempate.sh
 
-Starten Sie das Script mit git-Bash oder Bash  mit folgenden Parametern
+Starten Sie das Script mit git-Bash oder Bash und befolgen Sie die Anweisungen
 
-    ./clone-mse-swe-tempate.sh MSE-WS??-SWE <Main repo> <Second repo> <Username>
+    ./clone-mse-swe-tempate.sh
 
 Mit den Anweisungen kopieren Sie das Template in Ihr lokales Projekt.
 
 Achten Sie bitte darauf, dass immer BEIDE abgeben:
 
     git push all --all
-	.\git-push-all.ps1
 	./git-push-all.sh
 
 Implementierung
