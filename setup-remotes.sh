@@ -1,42 +1,54 @@
 #!/bin/bash
 
-if [ "$#" -ne 4 ]; then
-  echo "** ERROR: Invalid number of parameter"
-  echo "./setup-remotes.sh MSE-WS$(date +%y)-SWE <Main repo> <Second repo> <Username>"
-  echo ""
-  echo "MSE-WS$(date +%y)-SWE - Name of the repo. Must include the current year."
-  echo "Main repo    - se-number of your groups main repository. Example: if99x9999"
-  echo "Second repo  - se-number of your groups second repository. Example: if99x0000"
-  echo "Username     - se-number of your user name. Example: if99x9999"
-  echo ""
-  echo "Example"
-  echo "-------"
-  echo "On your PC:"
-  echo "./setup-remotes.sh MSE-WS$(date +%y)-SWE se99m9999 se99m0000 se99m9999"
-  echo ""
-  echo "On your colleagues PC:"
-  echo "./setup-remotes.sh MSE-WS$(date +%y)-SWE se99m9999 se99m0000 se99m0000"
-  exit 1;
-fi
+cfgRepoName="MSE-WS$(date +%y)-SWE"
+cfgRepoTestPattern="MSE-WS[0-9][0-9]-SWE$"
+cfgName1="se99x999"
+cfgName2="se00x000"
 
-if [[ ! $1 =~ MSE-WS[0-9][0-9]-SWE$ ]]; then
-  echo "** ERROR: Parameter 1 is not in a valid format! Must be MSE-WS??-SWE."
-  echo "Example: MSE-WS$(date +%y)-SWE"
-  exit 1;
-fi
+echo "Setting up remotes"
+echo "=================="
 
 repoName=$1
 mainRepoUserName=$2
 secondaryRepoUserName=$3
 myUserName=$4
 
-echo "Setting up remotes"
-echo "=================="
+while [  -z $repoName ]; do
+    echo "Name of the git-repository. Name must include the current year."
+	echo "Example: $cfgRepoName"
+    echo -n "RepoName (ENTER for $cfgRepoName): "
+    read repoName
+	
+	if [ -z $repoName ]; then 
+		repoName=$cfgRepoName
+	fi
 
-echo "Repo Name: $repoName"
-echo "Main:      $mainRepoUserName"
-echo "Secondary: $secondaryRepoUserName"
-echo "Username:  $myUserName"
+	if [[ ! $repoName =~ $cfgRepoTestPattern ]]; then
+		echo "** ERROR: Parameter is not in a valid format!"
+		repoName=""
+	fi
+done
+
+while [  -z $mainRepoUserName ]; do
+    echo "se-number of your groups main repository."
+	echo "Example: $cfgName1"
+    echo -n "Main repo: "
+    read mainRepoUserName
+done
+
+while [  -z $secondaryRepoUserName ]; do
+    echo "se-number of your groups second repository."
+	echo "Example: $cfgName2"
+    echo -n "Second repo: "
+    read secondaryRepoUserName
+done
+
+while [  -z $myUserName ]; do
+    echo "se-number of your user name."
+	echo "Example: $cfgName1"
+    echo -n "Username: "
+    read myUserName
+done
 
 git remote set-url origin "https://$myUserName@inf-swe-git.technikum-wien.at/r/~$mainRepoUserName/$repoName.git"
 
