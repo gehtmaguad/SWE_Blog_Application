@@ -1,4 +1,4 @@
-﻿Installationsanleitung MonoDevelop
+Installationsanleitung MonoDevelop
 ==================================
 http://monodevelop.com/
 
@@ -18,8 +18,8 @@ Nach dem Programmstart wird ein Update auf 5.3 vorgeschlagen.
 
 Linux
 -----
-https://github.com/mono/monodevelop
-http://monodevelop.com/developers/building_monodevelop
+* https://github.com/mono/monodevelop
+* http://monodevelop.com/developers/building_monodevelop
 
 Folgende Pakete müssen installiert sein:
 
