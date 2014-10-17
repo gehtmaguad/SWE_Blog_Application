@@ -12,6 +12,7 @@ echo "Cloning $cfgCourseName template"
 echo "============================================"
 
 while [  -z $repoName ]; do
+	echo ""
     echo "Name of the git-repository. Name must include the current year."
 	echo "Example: $cfgRepoName"
     echo -n "RepoName (ENTER for $cfgRepoName): "
@@ -26,6 +27,8 @@ while [  -z $repoName ]; do
 		repoName=""
 	fi
 done
+
+echo ""
 
 git clone $cfgTempateUrl "$repoName"
 cd "$repoName"

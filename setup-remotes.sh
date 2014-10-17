@@ -14,6 +14,7 @@ secondaryRepoUserName=$3
 myUserName=$4
 
 while [  -z $repoName ]; do
+	echo ""
     echo "Name of the git-repository. Name must include the current year."
 	echo "Example: $cfgRepoName"
     echo -n "RepoName (ENTER for $cfgRepoName): "
@@ -30,6 +31,7 @@ while [  -z $repoName ]; do
 done
 
 while [  -z $mainRepoUserName ]; do
+	echo ""
     echo "se-number of your groups main repository."
 	echo "Example: $cfgName1"
     echo -n "Main repo: "
@@ -37,6 +39,7 @@ while [  -z $mainRepoUserName ]; do
 done
 
 while [  -z $secondaryRepoUserName ]; do
+	echo ""
     echo "se-number of your groups second repository."
 	echo "Example: $cfgName2"
     echo -n "Second repo: "
@@ -44,11 +47,14 @@ while [  -z $secondaryRepoUserName ]; do
 done
 
 while [  -z $myUserName ]; do
+	echo ""
     echo "se-number of your user name."
 	echo "Example: $cfgName1"
     echo -n "Username: "
     read myUserName
 done
+
+echo ""
 
 git remote set-url origin "https://$myUserName@inf-swe-git.technikum-wien.at/r/~$mainRepoUserName/$repoName.git"
 
