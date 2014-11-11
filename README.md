@@ -1,4 +1,4 @@
-﻿MSE/SWE My WebServer
+MSE/SWE My WebServer
 ======================
 
 C# Template für das Übungsbeispiel "My-MSE-Blog". Damit die Übung erfolgreich abgegeben werden kann müssen folgende Kriterien erfüllt sein:
@@ -8,13 +8,21 @@ C# Template für das Übungsbeispiel "My-MSE-Blog". Damit die Übung erfolgreich
 
 Benutzen Sie bitte die Vorlage. Sie ist so vorbereitet, dass sie am Jenkins verwendet werden kann.
 
-Diese Vorlage wurde für Visual Studio 2013 sowie MonoDevelop 5.6 erstellt. Sie können aber jede andere Entwicklungsumgebung benutzen, solange MSE-SWE.sln am Jenkins kompilierbar bleibt. Sie können unter Windows oder unter Linux arbeiten.
+> **Wichtig!** Unter **keinen** Umständen ein Update auf **MVC 5** oder höher durchführen! 
+> 
+> Mono 3.10 wirft eine "System.MissingMethodException" sobald ein @Html.ActionLink("Administration", "Index", "Admin") benutzt wird. Die MVC Vorlage von MonDevelop ist trügerisch, da sie auf der Hauptseite eben **keinen** ActionLink benutzt. 
 
-Eine Anleitung zur Installation von MonoDevelop finden Sie hier: https://inf-swe-git.technikum-wien.at/raw/MSE/SWE.git/master/monodevelop.pdf
+### Unterstütze Entwicklungsumgebungen ###
+Diese Vorlage wurde für Visual Studio 2013 sowie MonoDevelop 5.5 erstellt. Sie können aber jede andere Entwicklungsumgebung benutzen, solange MSE-SWE.sln am Jenkins kompilierbar bleibt. Sie können unter Windows oder unter Linux arbeiten.
+
+### Linux ###
+Eine Anleitung zur Installation von Mono sowie MonoDevelop finden Sie hier: 
+
+[http://www.mono-project.com/docs/getting-started/install/linux/](http://www.mono-project.com/docs/getting-started/install/linux/)
 
 Repository
 ----------
-https://inf-swe-git.technikum-wien.at/
+[https://inf-swe-git.technikum-wien.at/](https://inf-swe-git.technikum-wien.at/)
 
 Das Repository ist selbst anzulegen: 
 
@@ -28,15 +36,15 @@ Das Repository hat die URL: https://se99x000@inf-swe-git.technikum-wien.at/?r=~s
 * se99x000 ist durch Ihre se-Nummer zu ersetzen
 * MSE-WS??-SWE durch das Jahr (WS 14/15 -> MSE-WS14-SWE)
 
-Sie sollten Ihr Repository Ihren KollegInnen freigeben. Mit "git add remote" (http://git-scm.com/docs/git-remote) können Sie mehrere Remotes angeben und die Abgabe somit vereinfachen. Benutzen Sie hierfür das setup-remotes script.
+Sie sollten Ihr Repository Ihren KollegInnen freigeben. Mit ["git add remote"](http://git-scm.com/docs/git-remote) können Sie mehrere Remotes angeben und die Abgabe somit vereinfachen. Benutzen Sie hierfür das setup-remotes script.
 
 Setup des Projektes
 -------------------
-https://inf-swe-git.technikum-wien.at/summary/?r=MSE/SWE.git
+[https://inf-swe-git.technikum-wien.at/summary/?r=MSE/SWE.git](https://inf-swe-git.technikum-wien.at/summary/?r=MSE/SWE.git)
 
 Laden Sie aus dem Template die Datei clone-mse-swe-tempate.sh herunter 
 
-https://inf-swe-git.technikum-wien.at/raw/MSE/SWE.git/master/clone-mse-swe-tempate.sh
+[https://inf-swe-git.technikum-wien.at/raw/MSE/SWE.git/master/clone-mse-swe-tempate.sh](https://inf-swe-git.technikum-wien.at/raw/MSE/SWE.git/master/clone-mse-swe-tempate.sh)
 
 Starten Sie das Script mit git-Bash oder Bash und befolgen Sie die Anweisungen
 
@@ -59,7 +67,7 @@ Ihre eigenen Klassen, die Sie im Rahmen der Übung implementieren, müssen ebenf
 
 Unit-Tests
 ----------
-https://inf-swe-git.technikum-wien.at/tree/?f=MSE-SWE&r=SYSTEM/unit-tests.git&h=master
+[https://inf-swe-git.technikum-wien.at/tree/?f=MSE-SWE&r=SYSTEM/unit-tests.git&h=master](https://inf-swe-git.technikum-wien.at/tree/?f=MSE-SWE&r=SYSTEM/unit-tests.git&h=master)
 
 Am Jenkins wird Ihre Abgabe mit diesen Unit-Tests getestet. Diese Tests stehen Ihnen zur Verfügung. Sie können daher lokal, vorab überprüfen, ob Sie die Unit-Tests bestehen oder nicht.
 
@@ -67,7 +75,7 @@ In diesem Projekt ist auch dokumentiert, welche Interfaces Ihre Klassen implemen
 
 Jenkins
 -------
-https://inf-swe-jenkins.technikum-wien.at/view/MSE-SWE/
+[https://inf-swe-jenkins.technikum-wien.at/view/MSE-SWE/](https://inf-swe-jenkins.technikum-wien.at/view/MSE-SWE/)
 
 Am Jenkins können Sie dann das Ergebnis Ihrer Abgabe sehen.
 
