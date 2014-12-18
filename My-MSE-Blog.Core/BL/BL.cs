@@ -57,5 +57,13 @@ namespace MyMSEBlog.Core.BL
         {
             return _dal.GetUserList().Single(i => i.ID == id);
         }
+
+        public void SaveChanges()
+        {
+            // TODO: Add some usefull business logic here
+
+            // Delegate save request to the data access layer
+            _dal.SaveChanges();
+        }
     }
 }
