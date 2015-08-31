@@ -1,4 +1,4 @@
-MSE/SWE My WebServer
+﻿MSE/SWE My WebServer
 ======================
 
 C# Template für das Übungsbeispiel "My-MSE-Blog". Damit die Übung erfolgreich abgegeben werden kann müssen folgende Kriterien erfüllt sein:
@@ -22,40 +22,34 @@ Eine Anleitung zur Installation von Mono sowie MonoDevelop finden Sie hier:
 
 Repository
 ----------
-[https://inf-swe-git.technikum-wien.at/](https://inf-swe-git.technikum-wien.at/)
+https://inf-swe-git.technikum-wien.at/
 
-Das Repository ist selbst anzulegen: 
+Das Repository ist vom Gruppenleiter selbst anzulegen: 
 
 * my dashboard 
 * owned 
 * new repository 
-* se99x000/MSE-WS??-SWE
+* se00x000/MSE-WS??-SWE
 
-Das Repository hat die URL: https://se99x000@inf-swe-git.technikum-wien.at/?r=~se99x000/MSE-WS??-SWE.git
+Das Repository hat die URL: https://se00x000@inf-swe-git.technikum-wien.at/?r=~se00x000/MSE-WS??-SWE.git
 
-* se99x000 ist durch Ihre se-Nummer zu ersetzen
-* MSE-WS??-SWE durch das Jahr (WS 14/15 -> MSE-WS14-SWE)
+* se00x000 ist durch Ihre uid-Nummer zu ersetzen
+* MSE-WS??-SWE durch das Jahr (WS 2015/16 -> MSE-WS15-SWE)
 
-Sie sollten Ihr Repository Ihren KollegInnen freigeben. Mit ["git add remote"](http://git-scm.com/docs/git-remote) können Sie mehrere Remotes angeben und die Abgabe somit vereinfachen. Benutzen Sie hierfür das setup-remotes script.
+Sie sollten Ihr Repository Ihren KollegInnen freigeben.
 
 Setup des Projektes
 -------------------
 [https://inf-swe-git.technikum-wien.at/summary/?r=MSE/SWE.git](https://inf-swe-git.technikum-wien.at/summary/?r=MSE/SWE.git)
 
-Laden Sie aus dem Template die Datei clone-mse-swe-tempate.sh herunter 
+Clonen Sie das Template in ein Verzeichnis Ihrer Wahl und ändern Sie anschließend den remote/origin auf Ihr Repository
+	
+	git clone https://inf-swe-git.technikum-wien.at/r/MSE/SWE.git
+	cd SWE
+	git remote set-url origin https://se00x000@inf-swe-git.technikum-wien.at/r/~se00x000/MSE-WS??-SWE.git
+    git push origin master
 
-[https://inf-swe-git.technikum-wien.at/raw/MSE/SWE.git/master/clone-mse-swe-tempate.sh](https://inf-swe-git.technikum-wien.at/raw/MSE/SWE.git/master/clone-mse-swe-tempate.sh)
-
-Starten Sie das Script mit git-Bash oder Bash und befolgen Sie die Anweisungen
-
-    ./clone-mse-swe-tempate.sh
-
-Mit den Anweisungen kopieren Sie das Template in Ihr lokales Projekt.
-
-Achten Sie bitte darauf, dass immer BEIDE abgeben:
-
-    git push all --all
-	./git-push-all.sh
+Ihr KollegeInn klonen dann Ihr Repository.
 
 Implementierung
 ---------------
