@@ -5,6 +5,7 @@ using System.Text;
 using MSE.SWE.Interfaces;
 using MyMSEBlog.Controllers;
 using MyMSEBlog.Models;
+using MyMSEBlog.Core.Interfaces;
 
 namespace MyMSEBlog.Uebungen
 {
@@ -52,7 +53,7 @@ namespace MyMSEBlog.Uebungen
 
         public MSE.SWE.Interfaces.IAdminUserController GetAdminUserController(IBL bl)
         {
-            return new AdminUserController(bl);
+            return new AdminUserController((MyIBL)bl);
         }
 
         public MSE.SWE.Interfaces.IBlogPostsController GetBlogPostController(IBL bl)

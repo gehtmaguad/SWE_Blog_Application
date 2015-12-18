@@ -1,4 +1,5 @@
 ﻿using MSE.SWE.Interfaces;
+using MyMSEBlog.Core.Interfaces;
 using MyMSEBlog.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace MyMSEBlog.Controllers
 {
     public class AdminUserController : Controller, IAdminUserController
     {
-        IBL _bl;
+        MyIBL _bl;
 
         public AdminUserController()
         {
@@ -25,7 +26,7 @@ namespace MyMSEBlog.Controllers
             _bl = new MyMSEBlog.Core.BL.BL(new MyMSEBlog.Core.DAL.FileDAL(Server.MapPath("~/App_Data/Repository.xml")));
         }
 
-        public AdminUserController(IBL bl)
+        public AdminUserController(MyIBL bl)
         {
             _bl = bl;
         }
@@ -38,34 +39,106 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Create()
         {
-            // TODO: Implementation
-            return View();
+            return View(new UserViewModel());
         }
 
         [HttpPost]
-        ActionResult Create(UserViewModel vmdl)
+        public ActionResult Create(UserViewModel vmdl)
         {
-            // TODO: Implementation
-            return View();
+            if (_bl == null)
+            {
+                EnsureBL();
+            }
+
+            IUser user = new MyMSEBlog.Core.DAL.User();
+            user.BirtDate = new DateTime();
+            user.EMail = vmdl.EMail;
+            user.FirstName = vmdl.FirstName;
+            user.Group = new UserGroup();
+            user.IsDeleted = vmdl.IsDeleted;
+            user.LastName = vmdl.LastName;
+            user.MiddleName = vmdl.MiddleName;
+            user.NeedPasswordReset = vmdl.NeedPasswordReset;
+            user.PasswordHash = "test";
+            user.ValidationToken = vmdl.ValidationToken;
+
+            _bl.AddUser(user);
+            _bl.SaveChanges();
+
+            return View(vmdl);
         }
 
         public ActionResult Edit(int id)
         {
-            // TODO: Implementation
-            return View();
+            if (_bl == null)
+            {
+                EnsureBL();
+            }
+
+            return View(new UserViewModel(_bl.GetUser(id)));
         }
 
         [HttpPost]
-        ActionResult Edit(int id, UserViewModel vmdl)
+        public ActionResult Edit(int id, UserViewModel vmdl)
         {
-            // TODO: Implementation
-            return View();
+            if (_bl == null)
+            {
+                EnsureBL();
+            }
+
+            _bl.DeleteUser(_bl.GetUser(id));
+            _bl.SaveChanges();
+
+            IUser user = new MyMSEBlog.Core.DAL.User();
+            user.BirtDate = new DateTime();
+            user.EMail = vmdl.EMail;
+            user.FirstName = vmdl.FirstName;
+            user.Group = new UserGroup();
+            user.IsDeleted = vmdl.IsDeleted;
+            user.LastName = vmdl.LastName;
+            user.MiddleName = vmdl.MiddleName;
+            user.NeedPasswordReset = vmdl.NeedPasswordReset;
+            user.PasswordHash = "test";
+            user.ValidationToken = vmdl.ValidationToken;
+
+            _bl.AddUser(user);
+            _bl.SaveChanges();
+
+            return View(vmdl);
         }
 
-        [HttpPost]
+
+        public ActionResult Details(int id)
+        {
+            if (_bl == null)
+            {
+                EnsureBL();
+            }
+
+            return View(new UserViewModel(_bl.GetUser(id)));
+        }
+
         public ActionResult Delete(int id)
         {
-            // TODO: Implementation
+            if (_bl == null)
+            {
+                EnsureBL();
+            }
+
+            return View(new UserViewModel(_bl.GetUser(id)));
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, UserViewModel vmdl)
+        {
+            if (_bl == null)
+            {
+                EnsureBL();
+            }
+
+            _bl.DeleteUser(_bl.GetUser(id));
+            _bl.SaveChanges();
+
             return View();
         }
 

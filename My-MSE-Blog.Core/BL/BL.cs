@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MSE.SWE.Interfaces;
+using MyMSEBlog.Core.Interfaces;
 
 namespace MyMSEBlog.Core.BL
 {
-    public class BL : IBL
+    public class BL : MyIBL
     {
         IDAL _dal;
         public BL(IDAL dal)
@@ -56,6 +57,16 @@ namespace MyMSEBlog.Core.BL
         public MSE.SWE.Interfaces.IUser GetUser(int id)
         {
             return _dal.GetUserList().Single(i => i.ID == id);
+        }
+
+        public void AddUser(IUser user)
+        {
+            _dal.AddUser(user);
+        }
+
+        public void DeleteUser(IUser user)
+        {
+            _dal.DeleteUser(user);
         }
 
         public void SaveChanges()

@@ -75,10 +75,13 @@ namespace MyMSEBlog.Core.DAL
 
         public void AddUser(IUser user)
         {
-            Load();
-            var obj = (User)user;
-            obj.ID = _repo.Users.Max(i => i.ID) + 1;
-            _repo.Users.Add(obj);
+            //Load();
+            //var obj = (User)user;
+            //obj.ID = _repo.Users.Max(i => i.ID) + 1;
+            //_repo.Users.Add(obj);
+
+            //throw new NotImplementedException();
+            // TODO: Add User (currently outcomment because of XML Parsing Error)
         }
 
         public void DeletePost(IBlogPost post)
@@ -88,7 +91,8 @@ namespace MyMSEBlog.Core.DAL
 
         public void DeleteUser(IUser user)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            // TODO: Delete User
         }
 
         public IQueryable<IBlogPost> GetPostList()
@@ -104,13 +108,15 @@ namespace MyMSEBlog.Core.DAL
 
         public void SaveChanges()
         {
-            if (_repo == null) throw new InvalidOperationException("Unable to save a closed repository");
-            var serializer = new XmlSerializer(typeof(FileRepository));
-            using (var fs = new FileStream(_fileName, FileMode.OpenOrCreate))
-            {
-                fs.SetLength(0);
-                serializer.Serialize(fs, _repo);
-            }
+            //if (_repo == null) throw new InvalidOperationException("Unable to save a closed repository");
+            //var serializer = new XmlSerializer(typeof(FileRepository));
+            //using (var fs = new FileStream(_fileName, FileMode.OpenOrCreate))
+            //{
+            //    fs.SetLength(0);
+            //    serializer.Serialize(fs, _repo);
+            //}
+
+            // TODO: Find Error why repo is null
         }
     }
 }

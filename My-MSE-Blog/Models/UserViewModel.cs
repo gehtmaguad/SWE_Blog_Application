@@ -15,143 +15,115 @@ namespace MyMSEBlog.Models
 
         public UserViewModel(IUser mdl)
         {
-            // TODO: Complete member initialization
+            ID = mdl.ID;
+            BirtDate = mdl.BirtDate;
+            EMail = mdl.EMail;
+            FirstName = mdl.FirstName;
+            Group = mdl.Group;
+            LastName = mdl.LastName;
+            MiddleName = mdl.MiddleName;
+            NeedPasswordReset = mdl.NeedPasswordReset;
+            ValidationToken = mdl.ValidationToken;
+            IsDeleted = mdl.IsDeleted;
         }
 
         public DateTime? BirtDate
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public string ChangePassword
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public string ChangePasswordRepeat
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public string DisplayName
         {
-            get { throw new NotImplementedException(); }
+            get {
+                return LastName + " " + FirstName;
+            }
         }
 
         public string EMail
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public string FirstName
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public UserGroup Group
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            // TODO: Complete getter and setter
+            //get
+            //{
+            //    throw new NotImplementedException();
+            //}
+            //set
+            //{
+            //    throw new NotImplementedException();
+            //}
+            get;
+            set;
         }
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Groups
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            // TODO: Complete getter and remove setter
+            //get
+            //{
+            //    throw new NotImplementedException();
+            //}
+            get;
+            set;
         }
 
         public int ID
         {
-            get { throw new NotImplementedException(); }
+            get;
+            private set;
         }
 
         public bool IsDeleted
         {
-            get { throw new NotImplementedException(); }
+            get;
+            private set;
         }
 
         public string LastName
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public string MiddleName
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public bool NeedPasswordReset
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public Guid ValidationToken
         {
-            get { throw new NotImplementedException(); }
+            get;
+            private set;
         }
     }
 }

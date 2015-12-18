@@ -1,0 +1,92 @@
+﻿@model MyMSEBlog.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UserViewModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BirtDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BirtDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ChangePassword)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ChangePassword)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ChangePasswordRepeat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ChangePasswordRepeat)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DisplayName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DisplayName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EMail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EMail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsDeleted)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsDeleted)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MiddleName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MiddleName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NeedPasswordReset)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NeedPasswordReset)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ValidationToken)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ValidationToken)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

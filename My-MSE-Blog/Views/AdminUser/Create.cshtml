@@ -1,0 +1,108 @@
+﻿@model MyMSEBlog.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>UserViewModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BirtDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BirtDate)
+            @Html.ValidationMessageFor(model => model.BirtDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ChangePassword)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ChangePassword)
+            @Html.ValidationMessageFor(model => model.ChangePassword)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ChangePasswordRepeat)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ChangePasswordRepeat)
+            @Html.ValidationMessageFor(model => model.ChangePasswordRepeat)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EMail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EMail)
+            @Html.ValidationMessageFor(model => model.EMail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsDeleted)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsDeleted)
+            @Html.ValidationMessageFor(model => model.IsDeleted)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MiddleName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MiddleName)
+            @Html.ValidationMessageFor(model => model.MiddleName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NeedPasswordReset)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NeedPasswordReset)
+            @Html.ValidationMessageFor(model => model.NeedPasswordReset)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ValidationToken)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ValidationToken)
+            @Html.ValidationMessageFor(model => model.ValidationToken)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
