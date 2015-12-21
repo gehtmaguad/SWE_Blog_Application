@@ -86,10 +86,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
+    <Compile Include="Controllers\BlogPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BlogPostViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Uebungen\UEB1.cs" />
     <Compile Include="Uebungen\UEB2.cs" />
@@ -135,6 +137,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\AdminUser\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BlogPosts\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BlogPosts\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BlogPosts\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BlogPosts\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BlogPosts\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

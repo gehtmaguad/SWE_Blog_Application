@@ -67,10 +67,13 @@ namespace MyMSEBlog.Core.DAL
 
         public void AddPost(IBlogPost post)
         {
-            Load();
-            var obj = (BlogPost)post;
-            obj.ID = _repo.Posts.Max(i => i.ID) + 1;
-            _repo.Posts.Add(obj);
+            //Load();
+            //var obj = (BlogPost)post;
+            //obj.ID = _repo.Posts.Max(i => i.ID) + 1;
+            //_repo.Posts.Add(obj);
+
+            //throw new NotImplementedException();
+            // TODO: Add Post (currently outcomment because of XML Parsing Error)
         }
 
         public void AddUser(IUser user)
@@ -86,7 +89,8 @@ namespace MyMSEBlog.Core.DAL
 
         public void DeletePost(IBlogPost post)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            // TODO: Delete Post
         }
 
         public void DeleteUser(IUser user)
@@ -97,7 +101,8 @@ namespace MyMSEBlog.Core.DAL
 
         public IQueryable<IBlogPost> GetPostList()
         {
-            throw new NotImplementedException();
+            Load();
+            return _repo.Posts.AsQueryable<IBlogPost>();
         }
 
         public IQueryable<IUser> GetUserList()

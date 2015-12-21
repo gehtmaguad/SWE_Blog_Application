@@ -36,7 +36,7 @@ namespace MyMSEBlog.Core.BL
 
         public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetPostList()
         {
-            throw new NotImplementedException();
+            return _dal.GetPostList();
         }
 
         public MSE.SWE.Interfaces.IUser GetUser(string email)
@@ -51,7 +51,7 @@ namespace MyMSEBlog.Core.BL
 
         public MSE.SWE.Interfaces.IBlogPost GetPost(int id)
         {
-            throw new NotImplementedException();
+            return _dal.GetPostList().Single(i => i.ID == id);
         }
 
         public MSE.SWE.Interfaces.IUser GetUser(int id)
@@ -64,9 +64,19 @@ namespace MyMSEBlog.Core.BL
             _dal.AddUser(user);
         }
 
+        public void AddPost(IBlogPost blogPost)
+        {
+            _dal.AddPost(blogPost);
+        }
+
         public void DeleteUser(IUser user)
         {
             _dal.DeleteUser(user);
+        }
+
+        public void DeletePost(IBlogPost blogPost)
+        {
+            _dal.DeletePost(blogPost);
         }
 
         public void SaveChanges()
