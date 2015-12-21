@@ -33,12 +33,12 @@ namespace MyMSEBlog.Uebungen
 
         public MSE.SWE.Interfaces.IBlogPostsController GetBlogPostController()
         {
-            throw new NotImplementedException();
+            return new BlogPostsController();
         }
 
         public MSE.SWE.Interfaces.IBlogPostViewModel GetBlogPostViewModel(MSE.SWE.Interfaces.IBlogPost mdl)
         {
-            throw new NotImplementedException();
+            return new BlogPostViewModel(mdl);
         }
 
         public IDAL GetDAL(string filename)
@@ -58,7 +58,7 @@ namespace MyMSEBlog.Uebungen
 
         public MSE.SWE.Interfaces.IBlogPostsController GetBlogPostController(IBL bl)
         {
-            throw new NotImplementedException();
+            return new BlogPostsController((MyIBL)bl);
         }
     }
 }
