@@ -48,7 +48,7 @@ namespace MyMSEBlog.Models
         public string DisplayName
         {
             get {
-                return LastName + " " + FirstName;
+                return ((FirstName.Trim() + " " + MiddleName.Trim()).Trim() + " " + LastName.Trim()).Trim();;
             }
         }
 
