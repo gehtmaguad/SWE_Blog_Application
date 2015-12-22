@@ -17,71 +17,17 @@ namespace MyMSEBlog.Core.DAL
 
     public class User : IUser
     {
-        public int ID
-        {
-            get;
-            set;
-        }
-
-        public DateTime? BirtDate
-        {
-            get;
-            set;
-        }
-
-        public string EMail
-        {
-            get;
-            set;
-        }
-
-        public string FirstName
-        {
-            get;
-            set;
-        }
-
-        public UserGroup Group
-        {
-            get;
-            set;
-        }
-
-        public string LastName
-        {
-            get;
-            set;
-        }
-
-        public string MiddleName
-        {
-            get;
-            set;
-        }
-
-        public bool NeedPasswordReset
-        {
-            get;
-            set;
-        }
-
-        public string PasswordHash
-        {
-            get;
-            set;
-        }
-
-        public Guid ValidationToken
-        {
-            get;
-            set;
-        }
-
-        public bool IsDeleted
-        {
-            get;
-            set;
-        }
+        public int ID { get; set; }
+        public DateTime? BirtDate { get; set; }
+        public string EMail { get; set; }
+        public string FirstName { get; set; }
+        public UserGroup Group { get; set; }
+        public string LastName { get; set; }
+        public string MiddleName { get; set; }
+        public bool NeedPasswordReset { get; set; }
+        public string PasswordHash { get; set; }
+        public Guid ValidationToken { get; set; }
+        public bool IsDeleted { get; set; }
     }
 
     public class BlogPost : IBlogPost
@@ -89,24 +35,9 @@ namespace MyMSEBlog.Core.DAL
         /// <summary>
         /// Used for lazy loading CreatedBy User
         /// </summary>
-        internal FileRepository Repo
-        {
-            get;
-            set;
-        }
-
-        public int ID
-        {
-            get;
-            set;
-        }
-
-        public string Content
-        {
-            get;
-            set;
-        }
-
+        internal FileRepository Repo { get; set; }
+        public int ID { get; set; }
+        public string Content { get; set; }
         [XmlIgnore]
         public IUser CreatedBy
         {
@@ -120,42 +51,11 @@ namespace MyMSEBlog.Core.DAL
                 CreatedByID = value.ID;
             }
         }
-
-        public int CreatedByID
-        {
-            get;
-            set;
-        }
-
-
-        public DateTime CreatedOn
-        {
-            get;
-            set;
-        }
-
-        public string Summary
-        {
-            get;
-            set;
-        }
-
-        public string Tags
-        {
-            get;
-            set;
-        }
-
-        public string Title
-        {
-            get;
-            set;
-        }
-
-        public bool IsDeleted
-        {
-            get;
-            set;
-        }
+        public int CreatedByID { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public string Summary { get; set; }
+        public string Tags { get; set; }
+        public string Title { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

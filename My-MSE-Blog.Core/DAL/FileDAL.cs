@@ -116,8 +116,6 @@ namespace MyMSEBlog.Core.DAL
                 fs.SetLength(0);
                 serializer.Serialize(fs, _repo);
             }
-
-            // TODO: Find Error why repo is null
         }
     }
 }
