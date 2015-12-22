@@ -11,19 +11,10 @@ namespace MyMSEBlog.Controllers
 {
     public class AdminUserController : Controller, IAdminUserController
     {
-        MyIBL _bl;
+        readonly MyIBL _bl;
 
         public AdminUserController()
         {
-        }
-
-        /// <summary>
-        /// Temporary. Will be replaced by a autofac solution.
-        /// </summary>
-        private void EnsureBL()
-        {
-            // TODO: Improve this!
-            _bl = new MyMSEBlog.Core.BL.BL(new MyMSEBlog.Core.DAL.FileDAL(Server.MapPath("~/App_Data/Repository.xml")));
         }
 
         public AdminUserController(MyIBL bl)
@@ -33,7 +24,6 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Index(int page = 0)
         {
-            EnsureBL();
             return View(_bl.GetUserList().Skip(page * 25).Take(25));
         }
 
@@ -45,11 +35,6 @@ namespace MyMSEBlog.Controllers
         [HttpPost]
         public ActionResult Create(UserViewModel vmdl)
         {
-            if (_bl == null)
-            {
-                EnsureBL();
-            }
-
             IUser user = CopyViewModelData(vmdl);
 
             _bl.AddUser(user);
@@ -78,22 +63,12 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Edit(int id)
         {
-            if (_bl == null)
-            {
-                EnsureBL();
-            }
-
             return View(new UserViewModel(_bl.GetUser(id)));
         }
 
         [HttpPost]
         public ActionResult Edit(int id, UserViewModel vmdl)
         {
-            if (_bl == null)
-            {
-                EnsureBL();
-            }
-
             _bl.DeleteUser(_bl.GetUser(id));
             _bl.SaveChanges();
 
@@ -108,32 +83,17 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Details(int id)
         {
-            if (_bl == null)
-            {
-                EnsureBL();
-            }
-
             return View(new UserViewModel(_bl.GetUser(id)));
         }
 
         public ActionResult Delete(int id)
         {
-            if (_bl == null)
-            {
-                EnsureBL();
-            }
-
             return View(new UserViewModel(_bl.GetUser(id)));
         }
 
         [HttpPost]
         public ActionResult Delete(int id, UserViewModel vmdl)
         {
-            if (_bl == null)
-            {
-                EnsureBL();
-            }
-
             _bl.DeleteUser(_bl.GetUser(id));
             _bl.SaveChanges();
 
