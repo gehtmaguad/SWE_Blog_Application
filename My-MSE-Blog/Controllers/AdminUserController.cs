@@ -50,11 +50,22 @@ namespace MyMSEBlog.Controllers
                 EnsureBL();
             }
 
+            IUser user = CopyViewModelData(vmdl);
+
+            _bl.AddUser(user);
+            _bl.SaveChanges();
+
+            return View(vmdl);
+        }
+
+        private IUser CopyViewModelData(UserViewModel vmdl)
+        {
             IUser user = new MyMSEBlog.Core.DAL.User();
+
             user.BirtDate = new DateTime();
             user.EMail = vmdl.EMail;
             user.FirstName = vmdl.FirstName;
-            user.Group = new UserGroup();
+            user.Group = vmdl.Group;
             user.IsDeleted = vmdl.IsDeleted;
             user.LastName = vmdl.LastName;
             user.MiddleName = vmdl.MiddleName;
@@ -62,10 +73,7 @@ namespace MyMSEBlog.Controllers
             user.PasswordHash = "test";
             user.ValidationToken = vmdl.ValidationToken;
 
-            _bl.AddUser(user);
-            _bl.SaveChanges();
-
-            return View(vmdl);
+            return user;
         }
 
         public ActionResult Edit(int id)
@@ -89,17 +97,7 @@ namespace MyMSEBlog.Controllers
             _bl.DeleteUser(_bl.GetUser(id));
             _bl.SaveChanges();
 
-            IUser user = new MyMSEBlog.Core.DAL.User();
-            user.BirtDate = new DateTime();
-            user.EMail = vmdl.EMail;
-            user.FirstName = vmdl.FirstName;
-            user.Group = new UserGroup();
-            user.IsDeleted = vmdl.IsDeleted;
-            user.LastName = vmdl.LastName;
-            user.MiddleName = vmdl.MiddleName;
-            user.NeedPasswordReset = vmdl.NeedPasswordReset;
-            user.PasswordHash = "test";
-            user.ValidationToken = vmdl.ValidationToken;
+            IUser user = CopyViewModelData(vmdl);
 
             _bl.AddUser(user);
             _bl.SaveChanges();

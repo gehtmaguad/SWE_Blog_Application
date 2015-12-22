@@ -50,7 +50,18 @@ namespace MyMSEBlog.Controllers
                 EnsureBL();
             }
 
+            IBlogPost blogPost = CopyViewModelData(vmdl);
+
+            _bl.AddPost(blogPost);
+            _bl.SaveChanges();
+
+            return View(vmdl);
+        }
+
+        private IBlogPost CopyViewModelData(BlogPostViewModel vmdl)
+        {
             IBlogPost blogPost = new MyMSEBlog.Core.DAL.BlogPost();
+
             blogPost.Content = vmdl.Content;
             // TODO: Improve this
             blogPost.CreatedBy = _bl.GetUser(1);
@@ -60,11 +71,7 @@ namespace MyMSEBlog.Controllers
             blogPost.Tags = vmdl.Tags;
             blogPost.Title = vmdl.Title;
 
-            // TODO: Implement AddPost
-            //_bl.AddPost(blogPost);
-            _bl.SaveChanges();
-
-            return View(vmdl);
+            return blogPost;
         }
 
         public ActionResult Edit(int id)
@@ -85,20 +92,12 @@ namespace MyMSEBlog.Controllers
                 EnsureBL();
             }
 
-            //_bl.DeletePost(_bl.GetPost(id));
+            _bl.DeletePost(_bl.GetPost(id));
             _bl.SaveChanges();
 
-            IBlogPost blogPost = new MyMSEBlog.Core.DAL.BlogPost();
-            blogPost.Content = vmdl.Content;
-            // TODO: Improve this
-            blogPost.CreatedBy = _bl.GetUser(1);
-            blogPost.CreatedOn = new DateTime();
-            blogPost.IsDeleted = false;
-            blogPost.Summary = vmdl.Summary;
-            blogPost.Tags = vmdl.Tags;
-            blogPost.Title = vmdl.Title;
+            IBlogPost blogPost = CopyViewModelData(vmdl);
 
-            //_bl.AddPost(blogPost);
+            _bl.AddPost(blogPost);
             _bl.SaveChanges();
 
             return View(vmdl);
@@ -132,7 +131,7 @@ namespace MyMSEBlog.Controllers
                 EnsureBL();
             }
 
-            //_bl.DeletePost(_bl.GetPost(id));
+            _bl.DeletePost(_bl.GetPost(id));
             _bl.SaveChanges();
 
             return View();

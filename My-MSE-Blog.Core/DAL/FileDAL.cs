@@ -67,36 +67,32 @@ namespace MyMSEBlog.Core.DAL
 
         public void AddPost(IBlogPost post)
         {
-            //Load();
-            //var obj = (BlogPost)post;
-            //obj.ID = _repo.Posts.Max(i => i.ID) + 1;
-            //_repo.Posts.Add(obj);
-
-            //throw new NotImplementedException();
-            // TODO: Add Post (currently outcomment because of XML Parsing Error)
+            Load();
+            var obj = (BlogPost)post;
+            obj.ID = _repo.Posts.Max(i => i.ID) + 1;
+            _repo.Posts.Add(obj);
         }
 
         public void AddUser(IUser user)
         {
-            //Load();
-            //var obj = (User)user;
-            //obj.ID = _repo.Users.Max(i => i.ID) + 1;
-            //_repo.Users.Add(obj);
-
-            //throw new NotImplementedException();
-            // TODO: Add User (currently outcomment because of XML Parsing Error)
+            Load();
+            var obj = (User)user;
+            obj.ID = _repo.Users.Max(i => i.ID) + 1;
+            _repo.Users.Add(obj);
         }
 
         public void DeletePost(IBlogPost post)
         {
-            //throw new NotImplementedException();
-            // TODO: Delete Post
+            Load();
+            var obj = (BlogPost)post;
+            _repo.Posts.Single(i => i.ID.Equals(obj.ID)).IsDeleted = true;
         }
 
         public void DeleteUser(IUser user)
         {
-            //throw new NotImplementedException();
-            // TODO: Delete User
+            Load();
+            var obj = (User)user;
+            _repo.Users.Single(i => i.ID.Equals(obj.ID)).IsDeleted = true;
         }
 
         public IQueryable<IBlogPost> GetPostList()
@@ -113,13 +109,13 @@ namespace MyMSEBlog.Core.DAL
 
         public void SaveChanges()
         {
-            //if (_repo == null) throw new InvalidOperationException("Unable to save a closed repository");
-            //var serializer = new XmlSerializer(typeof(FileRepository));
-            //using (var fs = new FileStream(_fileName, FileMode.OpenOrCreate))
-            //{
-            //    fs.SetLength(0);
-            //    serializer.Serialize(fs, _repo);
-            //}
+            if (_repo == null) throw new InvalidOperationException("Unable to save a closed repository");
+            var serializer = new XmlSerializer(typeof(FileRepository));
+            using (var fs = new FileStream(_fileName, FileMode.OpenOrCreate))
+            {
+                fs.SetLength(0);
+                serializer.Serialize(fs, _repo);
+            }
 
             // TODO: Find Error why repo is null
         }

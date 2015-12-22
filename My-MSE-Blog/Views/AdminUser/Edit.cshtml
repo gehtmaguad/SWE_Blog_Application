@@ -88,6 +88,13 @@
         </div>
 
         <div class="editor-label">
+            Group:
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Group, Model.Groups)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.ValidationToken)
         </div>
         <div class="editor-field">

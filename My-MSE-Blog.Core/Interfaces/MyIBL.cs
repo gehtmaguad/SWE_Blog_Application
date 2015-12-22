@@ -18,5 +18,15 @@ namespace MyMSEBlog.Core.Interfaces
         /// Deletes an existing User
         /// </summary>
         void DeleteUser(IUser user);
+
+        /// <summary>
+        /// Adds a new User
+        /// </summary>
+        void AddPost(IBlogPost blogPost);
+
+        /// <summary>
+        /// Adds a new User
+        /// </summary>
+        void DeletePost(IBlogPost blogPost);
     }
 }
