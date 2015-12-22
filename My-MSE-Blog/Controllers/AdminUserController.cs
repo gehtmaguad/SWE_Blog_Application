@@ -1,4 +1,5 @@
 ﻿using MSE.SWE.Interfaces;
+using MyMSEBlog.Core.DAL;
 using MyMSEBlog.Core.Interfaces;
 using MyMSEBlog.Models;
 using System;
@@ -35,30 +36,13 @@ namespace MyMSEBlog.Controllers
         [HttpPost]
         public ActionResult Create(UserViewModel vmdl)
         {
-            IUser user = CopyViewModelData(vmdl);
+            IUser user = new User();
+            vmdl.ApplyChanges(user);
 
             _bl.AddUser(user);
             _bl.SaveChanges();
 
             return View(vmdl);
-        }
-
-        private IUser CopyViewModelData(UserViewModel vmdl)
-        {
-            IUser user = new MyMSEBlog.Core.DAL.User();
-
-            user.BirtDate = new DateTime();
-            user.EMail = vmdl.EMail;
-            user.FirstName = vmdl.FirstName;
-            user.Group = vmdl.Group;
-            user.IsDeleted = vmdl.IsDeleted;
-            user.LastName = vmdl.LastName;
-            user.MiddleName = vmdl.MiddleName;
-            user.NeedPasswordReset = vmdl.NeedPasswordReset;
-            user.PasswordHash = "test";
-            user.ValidationToken = vmdl.ValidationToken;
-
-            return user;
         }
 
         public ActionResult Edit(int id)
@@ -72,7 +56,8 @@ namespace MyMSEBlog.Controllers
             _bl.DeleteUser(_bl.GetUser(id));
             _bl.SaveChanges();
 
-            IUser user = CopyViewModelData(vmdl);
+            IUser user = new User();
+            vmdl.ApplyChanges(user);
 
             _bl.AddUser(user);
             _bl.SaveChanges();

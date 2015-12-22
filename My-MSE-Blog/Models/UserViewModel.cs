@@ -23,26 +23,28 @@ namespace MyMSEBlog.Models
             LastName = mdl.LastName;
             MiddleName = mdl.MiddleName;
             NeedPasswordReset = mdl.NeedPasswordReset;
+            PasswordHash = mdl.PasswordHash;
             ValidationToken = mdl.ValidationToken;
             IsDeleted = mdl.IsDeleted;
         }
 
+        public int ID { get; private set; }
         public DateTime? BirtDate { get; set; }
-        public string ChangePassword { get; set; }
-        public string ChangePasswordRepeat { get; set; }
-        public string DisplayName
-        {
-            get {
-                return ((FirstName.Trim() + " " + MiddleName.Trim()).Trim() + " " + LastName.Trim()).Trim();;
-            }
-        }
         public string EMail { get; set; }
         public string FirstName { get; set; }
         public UserGroup Group { get; set; }
+        public string LastName { get; set; }
+        public string MiddleName { get; set; }
+        public bool NeedPasswordReset { get; set; }
+        public string PasswordHash { get; private set; }
+        public Guid ValidationToken { get; private set; }
+        public bool IsDeleted { get; private set; }
+
         public IEnumerable<System.Web.Mvc.SelectListItem> Groups
         {
-            get {
-                return new [] 
+            get
+            {
+                return new[] 
                 {
                     new SelectListItem
                     {
@@ -57,11 +59,44 @@ namespace MyMSEBlog.Models
                 };
             }
         }
-        public int ID { get; private set; }
-        public bool IsDeleted { get; private set; }
-        public string LastName { get; set; }
-        public string MiddleName { get; set; }
-        public bool NeedPasswordReset { get; set; }
-        public Guid ValidationToken { get; private set; }
+        public string ChangePassword { get; set; }
+        public string ChangePasswordRepeat { get; set; }
+        public string DisplayName
+        {
+            get {
+                return ConcatenateString(ConcatenateString(FirstName, MiddleName),LastName);
+            }
+        }
+
+        private string ConcatenateString(string first, string second)
+        {
+            if (!string.IsNullOrEmpty(first) && !string.IsNullOrEmpty(second))
+            {
+                return (first.Trim() + " " + second.Trim()).Trim();
+            } else if (!string.IsNullOrEmpty(first) && string.IsNullOrEmpty(second))
+            {
+                return first.Trim();
+            } else if (string.IsNullOrEmpty(first) && !string.IsNullOrEmpty(second))
+            {
+                return second.Trim();
+            } else
+            {
+                return string.Empty;
+            }
+        }
+
+        public void ApplyChanges(IUser obj)
+        {
+            obj.BirtDate = BirtDate;
+            obj.EMail = EMail;
+            obj.FirstName = FirstName;
+            obj.Group = Group;
+            obj.LastName = LastName;
+            obj.MiddleName = MiddleName;
+            obj.NeedPasswordReset = NeedPasswordReset;
+            obj.PasswordHash = PasswordHash;
+            obj.ValidationToken = ValidationToken;
+            obj.IsDeleted = IsDeleted;
+        }
     }
 }
