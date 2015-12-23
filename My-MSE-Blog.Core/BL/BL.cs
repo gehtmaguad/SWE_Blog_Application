@@ -11,7 +11,8 @@ namespace MyMSEBlog.Core.BL
 {
     public class BL : MyIBL
     {
-        IDAL _dal;
+        readonly IDAL _dal;
+
         public BL(IDAL dal)
         {
             if (dal == null) throw new ArgumentNullException("dal");

@@ -82,11 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_Start\" />
     <Folder Include="Content\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BlogPostsController.cs" />

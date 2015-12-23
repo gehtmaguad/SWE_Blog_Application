@@ -12,6 +12,11 @@ namespace MyMSEBlog.Core.DAL
     public class FileDAL : IDAL
     {
         private string _fileName;
+
+        public FileDAL()
+        {
+        }
+
         public FileDAL(string fileName)
         {
             if (string.IsNullOrWhiteSpace(fileName)) throw new ArgumentNullException("fileName");
