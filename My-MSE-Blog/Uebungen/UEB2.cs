@@ -27,15 +27,10 @@ namespace MyMSEBlog.Uebungen
                 .InstancePerLifetimeScope();
 
             // Using physical path as parameter
-            //builder.RegisterType<FileDAL>()
-            //    .As<IDAL>()
-            //    .WithParameter(new TypedParameter(typeof(string),
-            //        "C:/Users/gehtmaguad/Technikum/FH SWE Projekt/My-MSE-Blog/App_Data/Repository.xml"))
-            //    .InstancePerLifetimeScope();
-
-            // Using FileDAL Constructor with no arguments
             builder.RegisterType<FileDAL>()
                 .As<IDAL>()
+                .WithParameter(new TypedParameter(typeof(string),
+                    "../App_Data/Repository.xml"))
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<UserViewModel>()

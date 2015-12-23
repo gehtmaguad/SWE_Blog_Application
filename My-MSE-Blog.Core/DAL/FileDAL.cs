@@ -13,10 +13,6 @@ namespace MyMSEBlog.Core.DAL
     {
         private string _fileName;
 
-        public FileDAL()
-        {
-        }
-
         public FileDAL(string fileName)
         {
             if (string.IsNullOrWhiteSpace(fileName)) throw new ArgumentNullException("fileName");

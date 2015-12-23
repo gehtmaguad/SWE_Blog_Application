@@ -28,7 +28,7 @@ namespace MyMSEBlog.Uebungen
             builder.RegisterType<FileDAL>()
                 .As<IDAL>()
                 .WithParameter(new TypedParameter(typeof(string),
-                    "C:/Users/gehtmaguad/Technikum/FH SWE Projekt/My-MSE-Blog/App_Data/Repository.xml"))
+                    "../App_Data/Repository.xml"))
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<User>()
