@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Autofac;
 using MSE.SWE.Interfaces;
+using MyMSEBlog.Controllers;
+using MyMSEBlog.Core.BL;
+using MyMSEBlog.Core.Interfaces;
 
 namespace MyMSEBlog.Uebungen
 {
@@ -15,7 +19,18 @@ namespace MyMSEBlog.Uebungen
 
         public void SetupContainer(Autofac.ContainerBuilder builder)
         {
-            throw new NotImplementedException();
+            builder.RegisterType<BL>()
+                .As<MyIBL>()
+                .As<IBL>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<AdminUserController>()
+                .As<IAdminUserController>()
+                .InstancePerDependency();
+
+            builder.RegisterType<BlogPostsController>()
+                .As<IBlogPostsController>()
+                .InstancePerDependency();
         }
     }
 }

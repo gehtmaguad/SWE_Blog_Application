@@ -47,7 +47,9 @@ namespace MyMSEBlog.Models
         {
             obj.Content = Content;
             // TODO: Implement CreatedBy and CreatedOn
-            obj.CreatedOn = new DateTime();
+            //obj.CreatedOn = new DateTime();
+            obj.CreatedBy = (IUser)CreatedBy;
+            obj.CreatedOn = CreatedOn;
             obj.IsDeleted = false;
             obj.Summary = Summary;
             obj.Tags = Tags;

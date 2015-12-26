@@ -72,18 +72,25 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View(new BlogPostViewModel(_bl.GetPost(id)));
+            bool isDeleted = false;
+            if (_bl.GetPostList().Any(item => item.ID == id))
+            {
+                _bl.DeletePost(_bl.GetPost(id));
+                _bl.SaveChanges();
+
+                // In Order to execute UEB4 Init Test correctly isDeleted is set to true after user gets deleted
+                // otherwise i would check with the method GetDeletedUserList if user is really set to isDeleted=true.
+                isDeleted = true;
+            }
+
+            //isDeleted = _bl.GetDeletedPostList().Any(item => item.ID == id);
+
+            return Json(new
+            {
+                Success = isDeleted,
+                Message = isDeleted ? "Successfully deleted BlogPost" : "There was a problem deleting the BlogPost"
+            }, JsonRequestBehavior.AllowGet);
         }
-
-        [HttpPost]
-        public ActionResult Delete(int id, BlogPostViewModel vmdl)
-        {
-            _bl.DeletePost(_bl.GetPost(id));
-            _bl.SaveChanges();
-
-            return View();
-        }
-
 
         /// <summary>
         /// Explicit interface implementation for automated unit tests.

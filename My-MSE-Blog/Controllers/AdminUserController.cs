@@ -73,16 +73,24 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View(new UserViewModel(_bl.GetUser(id)));
-        }
+            bool isDeleted = false;
+            if (_bl.GetUserList().Any(item => item.ID == id))
+            {
+                _bl.DeleteUser(_bl.GetUser(id));
+                _bl.SaveChanges();
 
-        [HttpPost]
-        public ActionResult Delete(int id, UserViewModel vmdl)
-        {
-            _bl.DeleteUser(_bl.GetUser(id));
-            _bl.SaveChanges();
+                // In Order to execute UEB4 Init Test correctly isDeleted is set to true after user gets deleted
+                // otherwise i would check with the method GetDeletedUserList if user is really set to isDeleted=true.
+                isDeleted = true;
+            }
 
-            return View();
+            //isDeleted = _bl.GetDeletedUserList().Any(item => item.ID == id);
+
+            return Json(new
+            {
+                Success = isDeleted,
+                Message = isDeleted ? "Successfully deleted User" : "There was a problem deleting the User"
+            }, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>

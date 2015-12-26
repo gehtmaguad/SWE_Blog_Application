@@ -28,5 +28,10 @@ namespace MyMSEBlog.Core.Interfaces
         /// Adds a new User
         /// </summary>
         void DeletePost(IBlogPost blogPost);
+
+        /// <summary>
+        /// Returns list of deleted Users
+        /// </summary>
+        IQueryable<MSE.SWE.Interfaces.IUser> GetDeletedUserList();
     }
 }

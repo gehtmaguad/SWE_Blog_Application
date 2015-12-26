@@ -25,11 +25,6 @@ namespace MyMSEBlog.Core.BL
             throw new NotImplementedException();
         }
 
-        public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetDeletedPostList()
-        {
-            throw new NotImplementedException();
-        }
-
         public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetOwnPostList(string email)
         {
             throw new NotImplementedException();
@@ -37,7 +32,12 @@ namespace MyMSEBlog.Core.BL
 
         public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetPostList()
         {
-            return _dal.GetPostList();
+            return _dal.GetPostList().Where(obj => obj.IsDeleted == false); ;
+        }
+
+        public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetDeletedPostList()
+        {
+            return _dal.GetPostList().Where(obj => obj.IsDeleted == true);
         }
 
         public MSE.SWE.Interfaces.IUser GetUser(string email)
@@ -47,7 +47,12 @@ namespace MyMSEBlog.Core.BL
 
         public IQueryable<MSE.SWE.Interfaces.IUser> GetUserList()
         {
-            return _dal.GetUserList();
+            return _dal.GetUserList().Where(obj => obj.IsDeleted == false);
+        }
+
+        public IQueryable<MSE.SWE.Interfaces.IUser> GetDeletedUserList()
+        {
+            return _dal.GetUserList().Where(obj => obj.IsDeleted == true);
         }
 
         public MSE.SWE.Interfaces.IBlogPost GetPost(int id)
