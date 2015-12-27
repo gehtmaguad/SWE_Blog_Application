@@ -22,17 +22,18 @@ namespace MyMSEBlog.Core.BL
 
         public bool Authenticate(string email, string password)
         {
-            throw new NotImplementedException();
+            bool test = _dal.GetUserList().SingleOrDefault(i => i.EMail == email && i.PasswordHash == password) != null ? true : false;
+            return test;
         }
 
         public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetOwnPostList(string email)
         {
-            throw new NotImplementedException();
+            return _dal.GetPostList().Where(obj => obj.CreatedBy.EMail == email);
         }
 
         public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetPostList()
         {
-            return _dal.GetPostList().Where(obj => obj.IsDeleted == false); ;
+            return _dal.GetPostList().Where(obj => obj.IsDeleted == false);
         }
 
         public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetDeletedPostList()
@@ -42,7 +43,7 @@ namespace MyMSEBlog.Core.BL
 
         public MSE.SWE.Interfaces.IUser GetUser(string email)
         {
-            throw new NotImplementedException();
+            return _dal.GetUserList().SingleOrDefault(i => i.EMail == email);
         }
 
         public IQueryable<MSE.SWE.Interfaces.IUser> GetUserList()
@@ -57,12 +58,12 @@ namespace MyMSEBlog.Core.BL
 
         public MSE.SWE.Interfaces.IBlogPost GetPost(int id)
         {
-            return _dal.GetPostList().Single(i => i.ID == id);
+            return _dal.GetPostList().SingleOrDefault(i => i.ID == id);
         }
 
         public MSE.SWE.Interfaces.IUser GetUser(int id)
         {
-            return _dal.GetUserList().Single(i => i.ID == id);
+            return _dal.GetUserList().SingleOrDefault(i => i.ID == id);
         }
 
         public void AddUser(IUser user)
