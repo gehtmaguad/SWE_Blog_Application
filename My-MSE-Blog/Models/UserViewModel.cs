@@ -36,7 +36,7 @@ namespace MyMSEBlog.Models
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public bool NeedPasswordReset { get; set; }
-        public string PasswordHash { get; private set; }
+        public string PasswordHash { get; set; }
         public Guid ValidationToken { get; private set; }
         public bool IsDeleted { get; private set; }
 
