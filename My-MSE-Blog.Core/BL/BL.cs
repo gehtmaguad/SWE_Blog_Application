@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MSE.SWE.Interfaces;
 using MyMSEBlog.Core.Interfaces;
+using System.Security;
 
 namespace MyMSEBlog.Core.BL
 {
@@ -22,8 +23,7 @@ namespace MyMSEBlog.Core.BL
 
         public bool Authenticate(string email, string password)
         {
-            bool test = _dal.GetUserList().SingleOrDefault(i => i.EMail == email && i.PasswordHash == password) != null ? true : false;
-            return test;
+            return _dal.GetUserList().SingleOrDefault(i => i.EMail == email && i.PasswordHash == password) != null ? true : false;
         }
 
         public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetOwnPostList(string email)
@@ -38,7 +38,14 @@ namespace MyMSEBlog.Core.BL
 
         public IQueryable<MSE.SWE.Interfaces.IBlogPost> GetDeletedPostList()
         {
-            return _dal.GetPostList().Where(obj => obj.IsDeleted == true);
+            if (IsAdminUser())
+            {
+                return _dal.GetPostList().Where(obj => obj.IsDeleted == true);
+            }
+            else
+            {
+                throw new SecurityException();
+            }
         }
 
         public MSE.SWE.Interfaces.IUser GetUser(string email)
@@ -53,17 +60,40 @@ namespace MyMSEBlog.Core.BL
 
         public IQueryable<MSE.SWE.Interfaces.IUser> GetDeletedUserList()
         {
-            return _dal.GetUserList().Where(obj => obj.IsDeleted == true);
+            if (IsAdminUser())
+            {
+                return _dal.GetUserList().Where(obj => obj.IsDeleted == true);
+            }
+            else
+            {
+                throw new SecurityException();
+            }
         }
 
         public MSE.SWE.Interfaces.IBlogPost GetPost(int id)
         {
-            return _dal.GetPostList().SingleOrDefault(i => i.ID == id);
+            IBlogPost post = _dal.GetPostList().SingleOrDefault(i => i.ID == id);
+            if (post.IsDeleted == false || IsAdminUser() == true)
+            {
+                return post;
+            }
+            else
+            {
+                throw new SecurityException();
+            }
         }
 
         public MSE.SWE.Interfaces.IUser GetUser(int id)
         {
-            return _dal.GetUserList().SingleOrDefault(i => i.ID == id);
+            IUser user = _dal.GetUserList().SingleOrDefault(i => i.ID == id);
+            if (user.IsDeleted == false || IsAdminUser() == true)
+            {
+                return user;
+            }
+            else
+            {
+                throw new SecurityException();
+            }
         }
 
         public void AddUser(IUser user)
@@ -84,6 +114,16 @@ namespace MyMSEBlog.Core.BL
         public void DeletePost(IBlogPost blogPost)
         {
             _dal.DeletePost(blogPost);
+        }
+
+        public bool IsStandardUser(IUser user)
+        {
+            return System.Threading.Thread.CurrentPrincipal.IsInRole(UserGroup.User.ToString());
+        }
+
+        public bool IsAdminUser()
+        {
+            return System.Threading.Thread.CurrentPrincipal.IsInRole(UserGroup.Admin.ToString());
         }
 
         public void SaveChanges()
