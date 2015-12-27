@@ -47,7 +47,16 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View(new BlogPostViewModel(_bl.GetPost(id)));
+            IBlogPostViewModel blogpost = new BlogPostViewModel(_bl.GetPost(id));
+            if ((string)Session["email"] != blogpost.CreatedBy.EMail)
+            {
+                return Json(new
+                {
+                    Success = false,
+                    Message = "Not Allowed to edit this Post"
+                }, JsonRequestBehavior.AllowGet);
+            }
+            return View(blogpost);
         }
 
         [HttpPost]
