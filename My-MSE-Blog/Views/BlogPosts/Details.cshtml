@@ -10,53 +10,29 @@
     <legend>BlogPostViewModel</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Content)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Content)
+        @Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.CreatedOn)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CreatedOn)
+        @Html.DisplayNameFor(model => model.CreatedOn): @Html.DisplayFor(model => model.CreatedOn)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.DisplayText)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DisplayText)
+         @Html.DisplayNameFor(model => model.Content): @Html.DisplayFor(model => model.Content)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.IsDeleted)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsDeleted)
+        @Html.DisplayNameFor(model => model.Summary): @Html.DisplayFor(model => model.Summary)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Summary)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Summary)
+        @Html.DisplayNameFor(model => model.Tags): @Html.DisplayFor(model => model.Tags)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Tags)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Tags)
+         @Html.DisplayNameFor(model => model.IsDeleted): @Html.DisplayFor(model => model.IsDeleted)
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Title)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Title)
-    </div>
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |

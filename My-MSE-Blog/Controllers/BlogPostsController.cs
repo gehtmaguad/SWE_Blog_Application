@@ -42,15 +42,21 @@ namespace MyMSEBlog.Controllers
         [HttpPost]
         public ActionResult Create(BlogPostViewModel vmdl)
         {
-            IBlogPost blogPost = new BlogPost();
-            blogPost.CreatedBy = _bl.GetUser((string)Session["email"]);;
-            blogPost.CreatedOn = new DateTime();
-            vmdl.ApplyChanges(blogPost);
+            if (ModelState.IsValid)
+            {
+                IBlogPost blogPost = new BlogPost();
+                blogPost.CreatedBy = _bl.GetUser((string)Session["email"]); ;
+                blogPost.CreatedOn = DateTime.Now;
+                vmdl.ApplyChanges(blogPost);
 
-            _bl.AddPost(blogPost);
-            _bl.SaveChanges();
+                _bl.AddPost(blogPost);
+                _bl.SaveChanges();
 
-            return RedirectToAction("Index", "BlogPosts");
+                return RedirectToAction("Index", "BlogPosts");
+            }
+
+            return View(vmdl);
+
         }
 
         public ActionResult Edit(int id)
@@ -72,18 +78,23 @@ namespace MyMSEBlog.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
 
-            _bl.DeletePost(_bl.GetPost(id));
-            _bl.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _bl.DeletePost(_bl.GetPost(id));
+                _bl.SaveChanges();
 
-            IBlogPost blogPost = new BlogPost();
-            blogPost.CreatedBy = _bl.GetUser((string)Session["email"]); ;
-            blogPost.CreatedOn = new DateTime();
-            vmdl.ApplyChanges(blogPost);
+                IBlogPost blogPost = new BlogPost();
+                blogPost.CreatedBy = _bl.GetUser((string)Session["email"]); ;
+                blogPost.CreatedOn = DateTime.Now;
+                vmdl.ApplyChanges(blogPost);
 
-            _bl.AddPost(blogPost);
-            _bl.SaveChanges();
+                _bl.AddPost(blogPost);
+                _bl.SaveChanges();
 
-            return RedirectToAction("Index", "BlogPosts");
+                return RedirectToAction("Index", "BlogPosts");
+            }
+
+            return View(vmdl);
         }
 
         public ActionResult Details(int id)

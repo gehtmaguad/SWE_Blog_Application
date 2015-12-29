@@ -26,7 +26,7 @@ namespace MyMSEBlog.Controllers
         public ActionResult Index(int id = 0)
         {
             int page = id;
-            int elementsPerPage = 2;
+            int elementsPerPage = 5;
             int maxPage = _bl.GetUserList().Count() / elementsPerPage;
             if (page < 0) { page = maxPage; }
             if (page > maxPage) { page = 0; }
@@ -42,13 +42,20 @@ namespace MyMSEBlog.Controllers
         [HttpPost]
         public ActionResult Create(UserViewModel vmdl)
         {
-            IUser user = new User();
-            vmdl.ApplyChanges(user);
 
-            _bl.AddUser(user);
-            _bl.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                IUser user = new User();
+                vmdl.ApplyChanges(user);
 
-            return RedirectToAction("Index", "AdminUser");
+                _bl.AddUser(user);
+                _bl.SaveChanges();
+
+                return RedirectToAction("Index", "AdminUser");
+            }
+
+            return View(vmdl);
+
         }
 
         public ActionResult Edit(int id)
@@ -59,16 +66,21 @@ namespace MyMSEBlog.Controllers
         [HttpPost]
         public ActionResult Edit(int id, UserViewModel vmdl)
         {
-            _bl.DeleteUser(_bl.GetUser(id));
-            _bl.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _bl.DeleteUser(_bl.GetUser(id));
+                _bl.SaveChanges();
 
-            IUser user = new User();
-            vmdl.ApplyChanges(user);
+                IUser user = new User();
+                vmdl.ApplyChanges(user);
 
-            _bl.AddUser(user);
-            _bl.SaveChanges();
+                _bl.AddUser(user);
+                _bl.SaveChanges();
 
-            return RedirectToAction("Index", "AdminUser");
+                return RedirectToAction("Index", "AdminUser");
+            }
+
+            return View(vmdl);
         }
 
 

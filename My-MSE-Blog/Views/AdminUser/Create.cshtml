@@ -13,29 +13,7 @@
     <fieldset>
         <legend>UserViewModel</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.BirtDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.BirtDate)
-            @Html.ValidationMessageFor(model => model.BirtDate)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ChangePassword)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ChangePassword)
-            @Html.ValidationMessageFor(model => model.ChangePassword)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ChangePasswordRepeat)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ChangePasswordRepeat)
-            @Html.ValidationMessageFor(model => model.ChangePasswordRepeat)
-        </div>
+        @Html.HiddenFor(model => model.ValidationToken)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.EMail)
@@ -54,11 +32,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.IsDeleted)
+            @Html.LabelFor(model => model.MiddleName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.IsDeleted)
-            @Html.ValidationMessageFor(model => model.IsDeleted)
+            @Html.EditorFor(model => model.MiddleName)
+            @Html.ValidationMessageFor(model => model.MiddleName)
         </div>
 
         <div class="editor-label">
@@ -70,19 +48,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.MiddleName)
+            @Html.LabelFor(model => model.BirtDate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.MiddleName)
-            @Html.ValidationMessageFor(model => model.MiddleName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.NeedPasswordReset)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.NeedPasswordReset)
-            @Html.ValidationMessageFor(model => model.NeedPasswordReset)
+            @Html.EditorFor(model => model.BirtDate)
+            @Html.ValidationMessageFor(model => model.BirtDate)
         </div>
 
         <div class="editor-label">
@@ -90,14 +60,6 @@
         </div>
         <div class="editor-field">
             @Html.DropDownListFor(model => model.Group, Model.Groups)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ValidationToken)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ValidationToken)
-            @Html.ValidationMessageFor(model => model.ValidationToken)
         </div>
 
         <p>

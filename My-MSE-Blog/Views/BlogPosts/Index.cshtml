@@ -12,25 +12,10 @@
     <table>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Content)
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreatedOn)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.DisplayText)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.IsDeleted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Summary)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tags)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th></th>
         </tr>
@@ -39,25 +24,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Content)
+                    @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.DisplayText)
-                </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDeleted)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Summary)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tags)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |

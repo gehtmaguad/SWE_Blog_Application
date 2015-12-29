@@ -2,6 +2,7 @@
 using MyMSEBlog.Core.DAL;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,27 +29,47 @@ namespace MyMSEBlog.Models
         }
 
         public int ID { get; private set; }
+        [Required]
         public string Content { get; set; }
         public IUserViewModel CreatedBy { get; private set; }
+        [DataType(DataType.Date)] 
         public DateTime CreatedOn { get; private set; }
         public string Summary { get; set; }
         public string Tags { get; set; }
+        [Required]
         public string Title { get; set; }
         public bool IsDeleted { get; private set; }
 
         public string DisplayText
         {
-            get
+            get {
+                return ConcatenateString(ConcatenateString(Title, Content), Summary);
+            }
+        }
+
+        private string ConcatenateString(string first, string second)
+        {
+            if (!string.IsNullOrEmpty(first) && !string.IsNullOrEmpty(second))
             {
-                return Content;
+                return (first.Trim() + " " + second.Trim()).Trim();
+            }
+            else if (!string.IsNullOrEmpty(first) && string.IsNullOrEmpty(second))
+            {
+                return first.Trim();
+            }
+            else if (string.IsNullOrEmpty(first) && !string.IsNullOrEmpty(second))
+            {
+                return second.Trim();
+            }
+            else
+            {
+                return string.Empty;
             }
         }
 
         public void ApplyChanges(IBlogPost obj)
         {
             obj.Content = Content;
-            //obj.CreatedBy = CreatedBy;
-            //obj.CreatedOn = CreatedOn;
             obj.IsDeleted = false;
             obj.Summary = Summary;
             obj.Tags = Tags;

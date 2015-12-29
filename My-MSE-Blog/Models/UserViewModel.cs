@@ -1,6 +1,7 @@
 ﻿using MSE.SWE.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -29,10 +30,17 @@ namespace MyMSEBlog.Models
         }
 
         public int ID { get; private set; }
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? BirtDate { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
         public string EMail { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public UserGroup Group { get; set; }
+        [Required]
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public bool NeedPasswordReset { get; set; }
