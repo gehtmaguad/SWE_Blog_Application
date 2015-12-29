@@ -23,9 +23,15 @@ namespace MyMSEBlog.Controllers
             _bl = bl;
         }
 
-        public ActionResult Index(int page = 0)
+        public ActionResult Index(int id = 0)
         {
-            return View(_bl.GetPostList().Skip(page * 2).Take(2));
+            int page = id;
+            int elementsPerPage = 5;
+            int maxPage = _bl.GetPostList().Count() / elementsPerPage;
+            if (page < 0) { page = maxPage; }
+            if (page > maxPage) { page = 0; }
+            ViewBag.BlogPostControllerPage = page;
+            return View(_bl.GetPostList().Skip(page * elementsPerPage).Take(elementsPerPage));
         }
 
         public ActionResult Create()
