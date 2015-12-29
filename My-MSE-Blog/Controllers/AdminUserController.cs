@@ -42,7 +42,7 @@ namespace MyMSEBlog.Controllers
             _bl.AddUser(user);
             _bl.SaveChanges();
 
-            return View(vmdl);
+            return RedirectToAction("Index", "AdminUser");
         }
 
         public ActionResult Edit(int id)
@@ -62,7 +62,7 @@ namespace MyMSEBlog.Controllers
             _bl.AddUser(user);
             _bl.SaveChanges();
 
-            return View(vmdl);
+            return RedirectToAction("Index", "AdminUser");
         }
 
 

@@ -42,7 +42,7 @@ namespace MyMSEBlog.Controllers
             _bl.AddPost(blogPost);
             _bl.SaveChanges();
 
-            return View(vmdl);
+            return RedirectToAction("Index", "BlogPosts");
         }
 
         public ActionResult Edit(int id)
@@ -73,7 +73,7 @@ namespace MyMSEBlog.Controllers
             _bl.AddPost(blogPost);
             _bl.SaveChanges();
 
-            return View(vmdl);
+            return RedirectToAction("Index", "BlogPosts");
         }
 
         public ActionResult Details(int id)
