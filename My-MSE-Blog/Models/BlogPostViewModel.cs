@@ -1,4 +1,5 @@
 ﻿using MSE.SWE.Interfaces;
+using MyMSEBlog.Core.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,10 +47,8 @@ namespace MyMSEBlog.Models
         public void ApplyChanges(IBlogPost obj)
         {
             obj.Content = Content;
-            // TODO: Implement CreatedBy and CreatedOn
-            //obj.CreatedOn = new DateTime();
-            obj.CreatedBy = (IUser)CreatedBy;
-            obj.CreatedOn = CreatedOn;
+            //obj.CreatedBy = CreatedBy;
+            //obj.CreatedOn = CreatedOn;
             obj.IsDeleted = false;
             obj.Summary = Summary;
             obj.Tags = Tags;

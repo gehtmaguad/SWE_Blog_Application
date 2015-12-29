@@ -37,6 +37,8 @@ namespace MyMSEBlog.Controllers
         public ActionResult Create(BlogPostViewModel vmdl)
         {
             IBlogPost blogPost = new BlogPost();
+            blogPost.CreatedBy = _bl.GetUser((string)Session["email"]);;
+            blogPost.CreatedOn = new DateTime();
             vmdl.ApplyChanges(blogPost);
 
             _bl.AddPost(blogPost);
@@ -68,6 +70,8 @@ namespace MyMSEBlog.Controllers
             _bl.SaveChanges();
 
             IBlogPost blogPost = new BlogPost();
+            blogPost.CreatedBy = _bl.GetUser((string)Session["email"]); ;
+            blogPost.CreatedOn = new DateTime();
             vmdl.ApplyChanges(blogPost);
 
             _bl.AddPost(blogPost);
