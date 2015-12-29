@@ -25,7 +25,7 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Index(int page = 0)
         {
-            return View(_bl.GetPostList().Skip(page * 25).Take(25));
+            return View(_bl.GetPostList().Skip(page * 2).Take(2));
         }
 
         public ActionResult Create()
