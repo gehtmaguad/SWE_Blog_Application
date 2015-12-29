@@ -47,8 +47,15 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Edit(int id)
         {
+            return View(new BlogPostViewModel(_bl.GetPost(id)));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, BlogPostViewModel vmdl)
+        {
             IBlogPostViewModel blogpost = new BlogPostViewModel(_bl.GetPost(id));
-            if ((string)Session["email"] != blogpost.CreatedBy.EMail)
+
+            if (Session == null || (string)Session["email"] == null || blogpost.CreatedBy.EMail == null || (string)Session["email"] != blogpost.CreatedBy.EMail)
             {
                 return Json(new
                 {
@@ -56,12 +63,7 @@ namespace MyMSEBlog.Controllers
                     Message = "Not Allowed to edit this Post"
                 }, JsonRequestBehavior.AllowGet);
             }
-            return View(blogpost);
-        }
 
-        [HttpPost]
-        public ActionResult Edit(int id, BlogPostViewModel vmdl)
-        {
             _bl.DeletePost(_bl.GetPost(id));
             _bl.SaveChanges();
 
