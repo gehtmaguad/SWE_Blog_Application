@@ -110,7 +110,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_Start\" />
     <Folder Include="Content\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AdminController.cs" />
@@ -131,6 +130,18 @@
     <Compile Include="Uebungen\UEB6.cs" />
   </ItemGroup>
   <ItemGroup>
+	<!-- jQuery 1.4.4 is too old for jquery.validate.js
+    <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+	-->
+	<Content Include="Scripts\jquery-1.11.3.js" />
+    <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

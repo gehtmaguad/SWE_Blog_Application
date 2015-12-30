@@ -71,12 +71,23 @@ namespace MyMSEBlog
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
+        public static void RegisterBundles(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.validate.js",
+                        "~/Scripts/jquery.validate.unobtrusive.js"));
+
+            BundleTable.EnableOptimizations = true;
+        }
+
 		protected void Application_Start ()
 		{
 			AreaRegistration.RegisterAllAreas ();
 			RegisterGlobalFilters (GlobalFilters.Filters);
 			RegisterRoutes (RouteTable.Routes);
             RegisterAutofac(Server);
+            RegisterBundles(BundleTable.Bundles);
 		}
 	}
 }
