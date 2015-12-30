@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Mvc;
 
 namespace MyMSEBlog.Controllers
@@ -25,13 +26,19 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Index(int id = 0)
         {
-            int page = id;
+            IQueryable<IBlogPost> blogPosts = CacheController.GetBlogPosts();
             int elementsPerPage = 5;
-            int maxPage = _bl.GetPostList().Count() / elementsPerPage;
+            int page = GetPageNumber(id, elementsPerPage, blogPosts.Count());
+            ViewBag.BlogPostControllerPage = page;
+            return View(blogPosts.Skip(page * elementsPerPage).Take(elementsPerPage));
+        }
+
+        private int GetPageNumber(int page, int elementsPerPage, int blogPostCount)
+        {
+            int maxPage = blogPostCount / elementsPerPage;
             if (page < 0) { page = maxPage; }
             if (page > maxPage) { page = 0; }
-            ViewBag.BlogPostControllerPage = page;
-            return View(_bl.GetPostList().Skip(page * elementsPerPage).Take(elementsPerPage));
+            return page;
         }
 
         public ActionResult Create()
@@ -51,6 +58,8 @@ namespace MyMSEBlog.Controllers
 
                 _bl.AddPost(blogPost);
                 _bl.SaveChanges();
+
+                CacheController.UpdateBlogPosts();
 
                 return RedirectToAction("Index", "BlogPosts");
             }
@@ -91,6 +100,8 @@ namespace MyMSEBlog.Controllers
                 _bl.AddPost(blogPost);
                 _bl.SaveChanges();
 
+                CacheController.UpdateBlogPosts();
+
                 return RedirectToAction("Index", "BlogPosts");
             }
 
@@ -116,6 +127,8 @@ namespace MyMSEBlog.Controllers
             }
 
             //isDeleted = _bl.GetDeletedPostList().Any(item => item.ID == id);
+
+            CacheController.UpdateBlogPosts();
 
             return Json(new
             {

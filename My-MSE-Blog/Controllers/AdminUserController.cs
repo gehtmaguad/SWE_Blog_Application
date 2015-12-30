@@ -25,13 +25,19 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Index(int id = 0)
         {
-            int page = id;
+            IQueryable<IUser> users = CacheController.GetUsers();
             int elementsPerPage = 5;
-            int maxPage = _bl.GetUserList().Count() / elementsPerPage;
-            if (page < 0) { page = maxPage; }
-            if (page > maxPage) { page = 0; }
+            int page = GetPageNumber(id, elementsPerPage, users.Count());
             ViewBag.AdminUserControllerPage = page;
             return View(_bl.GetUserList().Skip(page * elementsPerPage).Take(elementsPerPage));
+        }
+
+        private int GetPageNumber(int page, int elementsPerPage, int blogPostCount)
+        {
+            int maxPage = blogPostCount / elementsPerPage;
+            if (page < 0) { page = maxPage; }
+            if (page > maxPage) { page = 0; }
+            return page;
         }
 
         public ActionResult Create()
@@ -50,6 +56,8 @@ namespace MyMSEBlog.Controllers
 
                 _bl.AddUser(user);
                 _bl.SaveChanges();
+
+                CacheController.UpdateUsers();
 
                 return RedirectToAction("Index", "AdminUser");
             }
@@ -77,6 +85,8 @@ namespace MyMSEBlog.Controllers
                 _bl.AddUser(user);
                 _bl.SaveChanges();
 
+                CacheController.UpdateUsers();
+
                 return RedirectToAction("Index", "AdminUser");
             }
 
@@ -103,6 +113,8 @@ namespace MyMSEBlog.Controllers
             }
 
             //isDeleted = _bl.GetDeletedUserList().Any(item => item.ID == id);
+
+            CacheController.UpdateUsers();
 
             return Json(new
             {
