@@ -82,6 +82,9 @@ namespace MyMSEBlog
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-ui-{version}.js"));
 
+            bundles.Add(new StyleBundle("~/bundles/css").Include(
+                        "~/Content/themes/base/*.css"));
+
             BundleTable.EnableOptimizations = true;
         }
 

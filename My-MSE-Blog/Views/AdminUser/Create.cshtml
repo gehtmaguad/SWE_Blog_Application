@@ -6,8 +6,6 @@
 
 <h2>Create</h2>
 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
-
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -77,6 +75,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/bundles/css")
 <script>
     $(function () {
         $(".datepicker").datepicker();
