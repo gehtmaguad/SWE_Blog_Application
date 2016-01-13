@@ -26,7 +26,7 @@ namespace MyMSEBlog.Controllers
 
         public ActionResult Index(int id = 0)
         {
-            IQueryable<IBlogPost> blogPosts = CacheController.GetBlogPosts();
+            IQueryable<IBlogPost> blogPosts = CacheController.GetBlogPosts(_bl);
             int elementsPerPage = 5;
             int page = GetPageNumber(id, elementsPerPage, blogPosts.Count());
             ViewBag.BlogPostControllerPage = page;
@@ -59,7 +59,7 @@ namespace MyMSEBlog.Controllers
                 _bl.AddPost(blogPost);
                 _bl.SaveChanges();
 
-                CacheController.UpdateBlogPosts();
+                CacheController.UpdateBlogPosts(_bl);
 
                 return RedirectToAction("Index", "BlogPosts");
             }
@@ -100,7 +100,7 @@ namespace MyMSEBlog.Controllers
                 _bl.AddPost(blogPost);
                 _bl.SaveChanges();
 
-                CacheController.UpdateBlogPosts();
+                CacheController.UpdateBlogPosts(_bl);
 
                 return RedirectToAction("Index", "BlogPosts");
             }
@@ -128,7 +128,7 @@ namespace MyMSEBlog.Controllers
 
             //isDeleted = _bl.GetDeletedPostList().Any(item => item.ID == id);
 
-            CacheController.UpdateBlogPosts();
+            CacheController.UpdateBlogPosts(_bl);
 
             return Json(new
             {

@@ -113,7 +113,9 @@ namespace MyMSEBlog.Core.BL
 
         public void DeletePost(IBlogPost blogPost)
         {
-            _dal.DeletePost(blogPost);
+            blogPost.IsDeleted = true;
+            SaveChanges();
+            //_dal.DeletePost(blogPost);
         }
 
         public bool IsStandardUser(IUser user)

@@ -11,52 +11,46 @@ using System.Web.Mvc;
 
 namespace MyMSEBlog.Controllers
 {
-    public class CacheController : Controller
+    public static class CacheController
     {
-        static readonly MyIBL _bl;
 
-        static CacheController()
-        {
-            _bl = DependencyResolver.Current.GetService<MyIBL>();
-        }
-
-        public static IQueryable<IBlogPost> GetBlogPosts()
+        public static IQueryable<IBlogPost> GetBlogPosts(MyIBL ibl)
         {
             lock (typeof(CacheController))
             {
                 IQueryable<IBlogPost> blogPosts = (IQueryable<IBlogPost>)HttpRuntime.Cache["BlogPosts"];
                 if (blogPosts == null)
                 {
-                    blogPosts = _bl.GetPostList();
+                    blogPosts = ibl.GetPostList();
                     HttpRuntime.Cache.Insert("BlogPosts", blogPosts);
                 }
                 return blogPosts;
             }
         }
 
-        public static void UpdateBlogPosts()
+        public static void UpdateBlogPosts(MyIBL ibl)
         {
-            IQueryable<IBlogPost> blogPosts = (IQueryable<IBlogPost>)_bl.GetPostList();
+            IQueryable<IBlogPost> blogPosts = ibl.GetPostList();
             HttpRuntime.Cache.Insert("BlogPosts", blogPosts);
         }
 
-        public static IQueryable<IUser> GetUsers()
+        public static IQueryable<IUser> GetUsers(MyIBL ibl)
         {
             lock (typeof(CacheController))
             {
                 IQueryable<IUser> users = (IQueryable<IUser>)HttpRuntime.Cache["Users"];
                 if (users == null)
                 {
-                    users = _bl.GetUserList();
+                    users = ibl.GetUserList();
                     HttpRuntime.Cache.Insert("Users", users);
                 }
                 return users;
             }
         }
 
-        public static void UpdateUsers()
+        public static void UpdateUsers(MyIBL ibl)
         {
-            IQueryable<IUser> users = (IQueryable<IUser>)_bl.GetUserList();
+            IQueryable<IUser> users = ibl.GetUserList();
             HttpRuntime.Cache.Insert("Users", users);
         }
 
