@@ -36,7 +36,7 @@ namespace MyMSEBlog.Controllers
 
         public static void UpdateBlogPosts()
         {
-            IQueryable<IBlogPost> blogPosts = new BL(new FileDAL("C:/Users/gehtmaguad/Technikum/FH SWE Projekt/My-MSE-Blog/App_Data/Repository.xml")).GetPostList();
+            IQueryable<IBlogPost> blogPosts = (IQueryable<IBlogPost>)_bl.GetPostList();
             HttpRuntime.Cache.Insert("BlogPosts", blogPosts);
         }
 
@@ -56,7 +56,7 @@ namespace MyMSEBlog.Controllers
 
         public static void UpdateUsers()
         {
-            IQueryable<IUser> users = new BL(new FileDAL("C:/Users/gehtmaguad/Technikum/FH SWE Projekt/My-MSE-Blog/App_Data/Repository.xml")).GetUserList();
+            IQueryable<IUser> users = (IQueryable<IUser>)_bl.GetUserList();
             HttpRuntime.Cache.Insert("Users", users);
         }
 
